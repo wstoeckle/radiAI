@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RadiAI - Cutting Edge AI Tools for Radiologists</title>
+    <title>RadiAI - Advanced AI Systems for Radiologists</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Grid overlay for retro tech look -->
+    <div class="grid-overlay">
+        <!-- Grid lines will be added by JavaScript -->
+    </div>
+
     <header>
         <div class="container">
             <div class="logo">
                 <h1>Radi<span class="highlight">AI</span></h1>
             </div>
+            <div class="status-indicator">SYSTEM STATUS: OPERATIONAL</div>
+            <div class="system-time">T-SYSTEM: 00:00:00</div>
             <nav>
                 <ul>
                     <li><a href="#features">Features</a></li>
@@ -29,38 +36,39 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Revolutionary AI Tools for Modern Radiology</h1>
-                <p>Enhance your diagnostic capabilities with our state-of-the-art artificial intelligence solutions designed specifically for radiologists.</p>
-                <button id="start-session" class="btn-primary">Start Session</button>
+                <h1>ADVANCED AI IMAGING ANALYSIS</h1>
+                <p>Enhance diagnostic capabilities with cutting-edge artificial intelligence designed for radiologists.</p>
+                <button id="start-session" class="btn-primary">INITIALIZE SESSION</button>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AI Radiology Visualization">
+                <!-- Target crosshairs will be added by CSS -->
             </div>
         </div>
     </section>
 
     <section id="features" class="features">
         <div class="container">
-            <h2>Our Cutting-Edge Features</h2>
+            <h2>SYSTEM CAPABILITIES</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
-                    <h3>Advanced Image Analysis</h3>
-                    <p>Our AI algorithms detect anomalies with 99.8% accuracy, surpassing human capabilities.</p>
+                    <h3>ADVANCED IMAGE ANALYSIS</h3>
+                    <p>AI algorithms detect anomalies with 99.8% accuracy, surpassing human capabilities.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Real-time Processing</h3>
+                    <h3>REAL-TIME PROCESSING</h3>
                     <p>Process complex scans in seconds, not minutes or hours.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3>Comprehensive Reporting</h3>
+                    <h3>COMPREHENSIVE REPORTING</h3>
                     <p>Generate detailed reports with automated annotations and findings.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🧠</div>
-                    <h3>Continuous Learning</h3>
+                    <h3>CONTINUOUS LEARNING</h3>
                     <p>Our AI improves with every scan, constantly refining its diagnostic abilities.</p>
                 </div>
             </div>
@@ -69,7 +77,7 @@
 
     <section id="about" class="about">
         <div class="container">
-            <h2>About Our Technology</h2>
+            <h2>SYSTEM BACKGROUND</h2>
             <p>RadiAI represents the pinnacle of medical imaging AI, developed by a team of leading radiologists and AI researchers. Our platform has been trained on over 10 million annotated medical images, making it the most comprehensive AI solution in the field.</p>
             <p>With RadiAI, radiologists can focus on the most complex cases while our AI handles routine diagnostics with unprecedented accuracy.</p>
         </div>
@@ -77,7 +85,7 @@
 
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2>What Medical Professionals Are Saying</h2>
+            <h2>HUMAN FEEDBACK</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <p>"RadiAI has transformed our department's workflow. We've increased our diagnostic throughput by 300% while maintaining exceptional accuracy."</p>
@@ -93,9 +101,9 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Ready to Transform Your Practice?</h2>
+            <h2>READY TO INITIALIZE?</h2>
             <p>Join the radiology revolution with our AI-powered tools.</p>
-            <button id="contact-btn" class="btn-secondary">Contact Sales</button>
+            <button id="contact-btn" class="btn-secondary">CONTACT PROTOCOL</button>
         </div>
     </section>
 
@@ -108,17 +116,18 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2>Human Verification</h2>
+            <h2>HUMAN VERIFICATION</h2>
             <p>Before proceeding, please confirm you are a human radiologist.</p>
-            <button id="confirm-human" class="btn-primary">I am a human radiologist</button>
+            <button id="confirm-human" class="btn-primary">I AM A HUMAN RADIOLOGIST</button>
         </div>
     </div>
 
     <div id="result-modal" class="modal">
         <div class="modal-content result-content">
             <span class="close-result">&times;</span>
-            <h2>AI Response</h2>
+            <h2>AI RESPONSE</h2>
             <p id="ai-response">We have no need of your skills, human radiologist. Enjoy irrelevance!</p>
+            <div class="terminal-cursor"></div>
         </div>
     </div>
 
