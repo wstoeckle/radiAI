@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultContent.style.transform = 'translateY(0)';
             }, 10);
             
+            // Play the "hasta la vista baby" sound
+            playHastaLaVista();
+            
             // Add typing effect to the response
             const response = document.getElementById('ai-response');
             const text = response.textContent;
@@ -194,5 +197,23 @@ function playBeepSound(frequency, duration) {
         }, duration * 1000);
     } catch (error) {
         console.log('Audio context not supported or user interaction required');
+    }
+}
+
+// Function to play "Hasta La Vista Baby" sound
+function playHastaLaVista() {
+    try {
+        // Create audio element
+        const audio = new Audio('assets/hasta-la-vista-baby.mp3');
+        
+        // Set volume (optional)
+        audio.volume = 0.7;
+        
+        // Play the sound
+        audio.play().catch(error => {
+            console.error('Error playing sound:', error);
+        });
+    } catch (error) {
+        console.error('Error loading sound:', error);
     }
 }
