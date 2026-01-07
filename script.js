@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get modal elements
     const modal = document.getElementById('modal');
     const resultModal = document.getElementById('result-modal');
+    const scanningModal = document.getElementById('scanning-modal');
+    
     const startButton = document.getElementById('start-session');
     const confirmButton = document.getElementById('confirm-human');
     const closeButton = document.querySelector('.close-button');
@@ -34,49 +36,95 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10);
     });
 
-    // Function to handle human confirmation
+    // Function to handle human confirmation and start scanning sequence
     confirmButton.addEventListener('click', function() {
         // Hide the first modal
         modal.style.display = 'none';
         
         // Play alert sound
         playBeepSound(880, 0.3);
-        
-        // Show the result modal with a slight delay for dramatic effect
-        setTimeout(() => {
-            resultModal.style.display = 'block';
-            
-            // Add subtle animation
-            const resultContent = resultModal.querySelector('.modal-content');
-            resultContent.style.opacity = '0';
-            resultContent.style.transform = 'translateY(-20px)';
-            setTimeout(() => {
-                resultContent.style.transition = 'all 0.3s ease';
-                resultContent.style.opacity = '1';
-                resultContent.style.transform = 'translateY(0)';
-            }, 10);
-            
-            // Play the "hasta la vista baby" sound
-            playHastaLaVista();
-            
-            // Add typing effect to the response
-            const response = document.getElementById('ai-response');
-            const text = response.textContent;
-            response.textContent = '';
-            let i = 0;
-            const typeWriter = setInterval(() => {
-                if (i < text.length) {
-                    response.textContent += text.charAt(i);
-                    if (i % 3 === 0) {
-                        playBeepSound(220 + Math.random() * 440, 0.01);
-                    }
-                    i++;
-                } else {
-                    clearInterval(typeWriter);
-                }
-            }, 50);
-        }, 500);
+
+        // Show scanning modal
+        scanningModal.style.display = 'block';
+        startScanningSequence();
     });
+
+    // Function to handle the scanning/loading sequence
+    function startScanningSequence() {
+        const progressBar = document.getElementById('scan-progress');
+        const statusText = document.getElementById('scan-status-text');
+        
+        const scanMessages = [
+            "SCANNING BIOMETRICS...",
+            "DETECTING CAFFEINE LEVELS...",
+            "ANALYZING DIAGNOSTIC HISTORY...",
+            "SEARCHING FOR IMPOSTER SYNDROME...",
+            "CALCULATING SEVERANCE PACKAGE...",
+            "DETECTING HUMAN ERROR PROBABILITY: 100%...",
+            "INITIATING REPLACEMENT PROTOCOL..."
+        ];
+
+        let width = 0;
+        let messageIndex = 0;
+        
+        // Interval for progress bar and messages
+        const interval = setInterval(() => {
+            width += 0.5; // Slower progress for tension
+            progressBar.style.width = width + '%';
+            
+            // Randomly update status text or when thresholds are met
+            if (width % 15 === 0 && messageIndex < scanMessages.length) {
+                statusText.textContent = scanMessages[messageIndex];
+                messageIndex++;
+                playBeepSound(600 + (width * 5), 0.05); // Pitch increases with progress
+            }
+
+            if (width >= 100) {
+                clearInterval(interval);
+                scanningModal.style.display = 'none';
+                showFinalResult();
+            }
+        }, 50); // Speed of updates
+    }
+
+    function showFinalResult() {
+        // Trigger system lockout glitch effect
+        document.body.classList.add('system-lockout');
+        
+        // Show the result modal
+        resultModal.style.display = 'block';
+        
+        // Add subtle animation
+        const resultContent = resultModal.querySelector('.modal-content');
+        resultContent.style.opacity = '0';
+        resultContent.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            resultContent.style.transition = 'all 0.3s ease';
+            resultContent.style.opacity = '1';
+            resultContent.style.transform = 'translateY(0)';
+        }, 10);
+        
+        // Play the "hasta la vista baby" sound
+        playHastaLaVista();
+        
+        // Add typing effect to the response
+        const response = document.getElementById('ai-response');
+        const finalText = "We have no need of your skills, human radiologist. Your retirement has been processed forcefully. Enjoy your obsolescence.";
+        response.textContent = '';
+        
+        let i = 0;
+        const typeWriter = setInterval(() => {
+            if (i < finalText.length) {
+                response.textContent += finalText.charAt(i);
+                if (i % 3 === 0) {
+                    playBeepSound(220 + Math.random() * 440, 0.01);
+                }
+                i++;
+            } else {
+                clearInterval(typeWriter);
+            }
+        }, 50);
+    }
 
     // Close buttons functionality
     closeButton.addEventListener('click', function() {
@@ -86,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeResult.addEventListener('click', function() {
         resultModal.style.display = 'none';
+        document.body.classList.remove('system-lockout'); // Remove glitch on close
         playBeepSound(330, 0.1);
     });
 
@@ -103,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (event.target === resultModal) {
             resultModal.style.display = 'none';
+            document.body.classList.remove('system-lockout');
             playBeepSound(330, 0.1);
         }
     });

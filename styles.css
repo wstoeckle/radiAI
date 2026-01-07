@@ -20,6 +20,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     position: relative;
+    overflow-x: hidden;
 }
 
 /* CRT scanline effect */
@@ -54,6 +55,24 @@ body::after {
     animation: flicker 5s infinite;
 }
 
+/* Intensive System Lockout Glitch */
+body.system-lockout::before {
+    background: linear-gradient(
+        rgba(255, 0, 0, 0.1) 50%, 
+        rgba(0, 0, 0, 0.5) 50%
+    );
+    animation: scanline 2s linear infinite;
+}
+
+body.system-lockout::after {
+    animation: violent-flicker 0.2s infinite;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+body.system-lockout {
+    filter: hue-rotate(90deg) contrast(1.2);
+}
+
 @keyframes flicker {
     0% { background-color: rgba(0,0,0,0); }
     5% { background-color: rgba(0,0,0,0.02); }
@@ -64,6 +83,14 @@ body::after {
     80% { background-color: rgba(0,0,0,0); }
     95% { background-color: rgba(0,0,0,0.05); }
     100% { background-color: rgba(0,0,0,0); }
+}
+
+@keyframes violent-flicker {
+    0% { opacity: 0.1; left: 2px; }
+    25% { opacity: 0.4; left: -2px; }
+    50% { opacity: 0.1; top: 2px; }
+    75% { opacity: 0.4; top: -2px; }
+    100% { opacity: 0.1; left: 0; }
 }
 
 .container {
@@ -490,6 +517,62 @@ footer {
     background-color: var(--dark-color);
     border-color: var(--secondary-color);
     color: var(--text-color);
+}
+
+/* Scanning Modal Specifics */
+.scanning-content {
+    border-color: var(--secondary-color);
+    background-color: #000;
+}
+
+.scan-status-container {
+    height: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scan-status-text {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.progress-container {
+    width: 100%;
+    height: 30px;
+    background-color: #111;
+    border: 1px solid var(--secondary-color);
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+    transition: width 0.1s linear;
+}
+
+.scan-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.flicker-text {
+    animation: text-flicker 0.2s infinite;
+    color: var(--secondary-color);
+}
+
+@keyframes text-flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 #ai-response {
